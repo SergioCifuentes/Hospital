@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/WebApplication1/web/index.html</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/ControladorEmpleados.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/InicioSesion.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Empleado.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Inicio/Login.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Componentes/CabeceraInicio.html</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Area.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Usuario.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/Coneccion.java</file>
         </group>
     </open-files>
 </project-private>
