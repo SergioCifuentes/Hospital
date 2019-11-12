@@ -6,15 +6,17 @@
 package Empleados.Areas;
 
 import Empleados.Area;
+import Empleados.PeriodoLaboral;
 import Empleados.Usuario;
+import java.util.ArrayList;
 
 /**
  *
  * @author sergio
  */
 public class Contratador extends Usuario{
-    public Contratador(String nombre, int cui, Area area, String username, String password) {
-        super(nombre, cui, area, username, password);
+    public Contratador(String nombre, int cui, Area area,ArrayList<PeriodoLaboral> periodoLaborals, String username, String password) {
+        super(nombre, cui, area,periodoLaborals, username, password);
     }
             
 }

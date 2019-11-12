@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,14 +23,21 @@
                 <form action="/Hospital/InicioSesion" method="post" >
                     UserName: <br>
                     <input type="text" name="userName" id="user"placeholder="Ingrese UserName"
-                           required  
+                           required 
+                           <c:if test="${requestScope['errorPassword'] != null}">   
+                               value=${requestScope['errorPassword']}
+                           </c:if>
                            <br><br>
+                    <c:if test="${requestScope['errorUserName'] != null}">   
+                        <small style="color: red" class="form-text text-muted">Usuario No Existente</small>
+                    </c:if>
 
                     Password: <br>
                     <input type="password" name="pass" placeholder="Ingrese Password" required/><br>
+                    <c:if test="${requestScope['errorPassword'] != null}">   
 
-                    <small class="form-text text-muted" style="color:red">Password Incorecto </small>
-
+                        <small class="form-text text-muted" style="color:red">Password Incorecto </small>
+                    </c:if>
                     <br>
                     <input type="submit" class="btn btn-dark" value="Iniciar Sesion" >
                 </form >

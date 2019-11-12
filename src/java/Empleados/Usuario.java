@@ -5,6 +5,8 @@
  */
 package Empleados;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sergio
@@ -14,8 +16,8 @@ public class Usuario extends Empleado{
     private String username;
     private String password;
     
-    public Usuario(String nombre, int cui, Area area,String username,String password) {
-        super(nombre, cui, area);
+    public Usuario(String nombre, int cui, Area area,ArrayList<PeriodoLaboral> periodoLaborals,String username,String password) {
+        super(nombre, cui, area,periodoLaborals);
         this.username=username;
         this.password=password;
         
