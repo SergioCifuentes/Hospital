@@ -18,12 +18,16 @@ public class Empleado {
     private int cui;
     private Area area;
     private ArrayList<PeriodoLaboral> periodos;
+    private boolean igss;
+    private boolean irtra;
 
-    public Empleado(String nombre, int cui, Area area,ArrayList<PeriodoLaboral> periodos) {
+    public Empleado(String nombre, int cui, Area area,ArrayList<PeriodoLaboral> periodos,boolean igss,boolean irtra) {
         this.nombre = nombre;
         this.cui = cui;
         this.area = area;
         this.periodos=periodos;
+        this.igss=igss;
+        this.irtra=irtra;
     }
 
     public String getNombre() {
@@ -40,6 +44,14 @@ public class Empleado {
 
     public ArrayList<PeriodoLaboral> getPeriodos() {
         return periodos;
+    }
+
+    public boolean isIgss() {
+        return igss;
+    }
+
+    public boolean isIrtra() {
+        return irtra;
     }
     
     

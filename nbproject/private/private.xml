@@ -6,7 +6,9 @@
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Componentes/cabeceraUsuario.jsp</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Componentes/CabeceraInicio.html</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/css/bootstrap.css</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/GeneradorDeCodigos.java</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Areas/Contratador.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Contrataciones.jsp</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/Coneccion.java</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Home.jsp</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/css/bootstrap.min.css</file>
@@ -14,10 +16,16 @@
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/InicioSesion.java</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/META-INF/context.xml</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Empleado.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/LogOut.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/PeriodosLaborales.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/js/ProcesoNuevo.js</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Inicio/Login.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Reportes/MenuReportes.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/PeriodoLaboral.java</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/WEB-INF/web.xml</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Area.java</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Usuario.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/ProcesoContratacion.java</file>
         </group>
     </open-files>
 </project-private>

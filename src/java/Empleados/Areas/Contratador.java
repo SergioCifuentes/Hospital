@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * @author sergio
  */
 public class Contratador extends Usuario{
-    public Contratador(String nombre, int cui, Area area,ArrayList<PeriodoLaboral> periodoLaborals, String username, String password) {
-        super(nombre, cui, area,periodoLaborals, username, password);
+    public Contratador(String nombre, int cui, Area area,boolean igss,boolean irtra,ArrayList<PeriodoLaboral> periodoLaborals, String username, String password) {
+        super(nombre, cui, area,periodoLaborals,igss,irtra, username, password);
     }
             
 }

@@ -4,9 +4,33 @@
         <servlet-name>iniciarSesion</servlet-name>
         <servlet-class>Servlet.InicioSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesoContratacion</servlet-name>
+        <servlet-class>Servlet.ProcesoContratacion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Contratar</servlet-name>
+        <servlet-class>Servlet.Contratar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Despedir</servlet-name>
+        <servlet-class>Servlet.Despedir</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>iniciarSesion</servlet-name>
         <url-pattern>/InicioSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesoContratacion</servlet-name>
+        <url-pattern>/ProcesoContratacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Contratar</servlet-name>
+        <url-pattern>/Contratar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Despedir</servlet-name>
+        <url-pattern>/Despedir</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

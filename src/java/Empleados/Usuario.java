@@ -16,8 +16,8 @@ public class Usuario extends Empleado{
     private String username;
     private String password;
     
-    public Usuario(String nombre, int cui, Area area,ArrayList<PeriodoLaboral> periodoLaborals,String username,String password) {
-        super(nombre, cui, area,periodoLaborals);
+    public Usuario(String nombre, int cui, Area area,ArrayList<PeriodoLaboral> periodoLaborals,boolean igss,boolean irtra,String username,String password) {
+        super(nombre, cui, area,periodoLaborals,igss,irtra);
         this.username=username;
         this.password=password;
         
