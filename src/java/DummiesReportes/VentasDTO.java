@@ -5,6 +5,8 @@
  */
 package DummiesReportes;
 
+import Medicamento.Venta;
+import java.util.ArrayList;
 import java.util.List;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
@@ -17,15 +19,21 @@ public class VentasDTO {
     private String cui;
     private String nombre;
     private JRBeanCollectionDataSource dataSource;
+    private ArrayList<Venta> ventas;
 
-    public VentasDTO(String cui, String nombre, List list) {
+    public VentasDTO(String cui, String nombre, ArrayList<Venta> list) {
         this.cui = cui;
         this.nombre = nombre;
         this.dataSource = new JRBeanCollectionDataSource(list);
+        ventas=list;
     }
 
     public String getCui() {
         return cui;
+    }
+
+    public ArrayList<Venta> getVentas() {
+        return ventas;
     }
 
     public String getNombre() {

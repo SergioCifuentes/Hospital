@@ -44,7 +44,13 @@
                 </a>
                 <div class="collapse" id="collapseComentarios<%=idx%>">
                     <div class="card card-body">
-                        
+                        <%for (int kdx = 0; kdx < medic.get(idx).getVentas().size(); kdx++) {%>
+                       Medicamento: <%=   medic.get(idx).getVentas().get(kdx).getMedicina().getTipo().getNombre()%>
+                        Fecha <%=   medic.get(idx).getVentas().get(kdx).getFecha()%>
+                        <br>
+                                <%
+                            }
+                        %>
                         <br>
                     </div>
                 </div>
