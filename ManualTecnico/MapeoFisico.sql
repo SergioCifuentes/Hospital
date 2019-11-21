@@ -404,7 +404,7 @@ CREATE TABLE IF NOT EXISTS `hospital`.`Sueldo` (
   `Cui` INT NOT NULL,
   `Monto` FLOAT NOT NULL,
   `Fecha` DATE NOT NULL,
-  PRIMARY KEY (`Cui`),
+  PRIMARY KEY (`Cui`,`Fecha`),
   CONSTRAINT `fk_Empleado_Sueldo`
     FOREIGN KEY (`Cui`)
     REFERENCES `hospital`.`Empleado` (`Cui`)

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>MyReports</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>net.sf.jasperreports.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>net.sf.jasperreports.nature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Cherry.jasper</name>
+			<type>1</type>
+			<location>/home/sergio/Clases2019/Progra/Untitled Folder/Ejemplos/Cherry.jasper</location>
+		</link>
+		<link>
+			<name>Cherry_1.jasper</name>
+			<type>1</type>
+			<location>/home/sergio/Clases2019/Progra/Untitled Folder/Ejemplos/Cherry.jasper</location>
+		</link>
+		<link>
+			<name>Cherry_2.jasper</name>
+			<type>1</type>
+			<location>/home/sergio/Clases2019/Progra/Untitled Folder/Ejemplos/Cherry.jasper</location>
+		</link>
+	</linkedResources>
+</projectDescription>

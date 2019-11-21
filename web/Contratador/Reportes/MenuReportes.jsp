@@ -3,9 +3,9 @@
 <h1>Reportes</h1>
 <select name="Area"class="custom-select" style="width:15%">
 
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <option class="dropdown-item" href="#Contrataciones">Contratados</option>
-        <option class="dropdown-item" href="#Retirados">Retirados</option>
+    <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+        <option class="dropdown-item" role="tab" id="contact-tab" data-toggle="tab" aria-controls="Contratados" aria-selected="true" href="#Contratados">Contratados</option>
+        <option class="dropdown-item" role="tab" id="contact-tab" data-toggle="tab" aria-controls="Retirados" aria-selected="false" href="#Retirados">Retirados</option>
         <option class="dropdown-item" href="#">Medicos</option>
     </div>
 </select>
@@ -13,8 +13,8 @@
 <br>
 <br>
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade " id="Contrataciones" role="tabpanel" aria-labelledby="Contrataciones-tab">wqwew</div>
-    <div class="tab-pane fade " id="Retirados" role="tabpanel" aria-labelledby="Retirados-tab">sdaw</div>
+    <div class="tab-pane fade show active" id="Contratados" role="tabpanel" aria-labelledby="Contratados-tab"><%@include file="Contratados.jsp"%></div>
+    <div class="tab-pane fade " id="Retirados" role="tabpanel" aria-labelledby="Retirados-tab"><%@include file="Retirados.jsp"%></div>
     <div class="tab-pane fade " id="Salarios" role="tabpanel" aria-labelledby="Salarios-tab"></div>
 </div>
 

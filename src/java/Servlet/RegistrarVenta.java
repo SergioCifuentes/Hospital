@@ -5,12 +5,15 @@
  */
 package Servlet;
 
-import DB.ControladorEmpleados;
-import Empleados.Area;
+import DB.ControladorFarmacia;
 import Empleados.Usuario;
+import Medicamento.AVender;
+import Medicamento.Medicina;
+import Medicamento.Venta;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author sergio
  */
-public class InicioSesion extends HttpServlet {
+public class RegistrarVenta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +37,23 @@ public class InicioSesion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet RegistrarVenta</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet RegistrarVenta at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -63,45 +79,24 @@ public class InicioSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("pass");
-        ControladorEmpleados co = new ControladorEmpleados();
-        if (co.verificarUserName(userName)) {
-            Usuario usuario = co.obtenerUsuario(userName, password);
-            HttpSession nuevoSession = request.getSession(true);
-            nuevoSession.setAttribute("Usuario", usuario);
-
-            if (usuario != null) {
-                request.setAttribute("Usuario", usuario);
-
-                switch (usuario.getArea().getCodigo()) {
-                    case Area.CONDIGO_CONTRATADOR:
-                        getServletContext().getRequestDispatcher("/Contratador/Home.jsp").forward(request, response);
-
-                        break;
-                    case Area.CONDIGO_FARMACEUTICO:
-                        getServletContext().getRequestDispatcher("/Farmacia/HomeFarmacia.jsp").forward(request, response);
-
-                        break;
-                    case Area.CONDIGO_CONSULTOR:
-                        getServletContext().getRequestDispatcher("/Recepcion/HomeRecepcion.jsp").forward(request, response);
-
-                        break;    
-                        
-                    default:
-                        throw new AssertionError();
-                }
-
-            } else {
-                request.setAttribute("errorPassword", userName);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/Inicio/Login.jsp");
-                dispatcher.forward(request, response);
-            }
-        } else {
-            request.setAttribute("errorUserName", userName);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/Inicio/Login.jsp");
-            dispatcher.forward(request, response);
+        if ("Registrar".equals(request.getParameter("Registrar"))) {
+            HttpSession session=request.getSession();
+        ArrayList<AVender> co = (ArrayList<AVender>) session.getAttribute("MedicamentosAVender");
+        ControladorFarmacia cont = new ControladorFarmacia();
+            System.out.println("size"+co.size());
+            Usuario persona = (Usuario) request.getSession().getAttribute("Usuario");
+            LocalDate date = LocalDate.parse(request.getParameter("fecha"));
+        for (int i = 0; i < co.size(); i++) {
+            
+            Venta venta = new Venta(persona,null, date);
+            cont.GuardarVenta(venta, co.get(i).getTipo());
+            
         }
+        
+         getServletContext().getRequestDispatcher("/Farmacia/HomeFarmacia.jsp").forward(request, response);
+
+        }
+        
     }
 
     /**
@@ -112,6 +107,6 @@ public class InicioSesion extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }// </editor-fold> 
 
 }

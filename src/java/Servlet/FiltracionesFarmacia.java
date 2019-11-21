@@ -6,22 +6,21 @@
 package Servlet;
 
 import DB.ControladorEmpleados;
-import Empleados.Area;
-import Empleados.Usuario;
+import DB.ControladorReportes;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author sergio
  */
-public class InicioSesion extends HttpServlet {
+public class FiltracionesFarmacia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +33,19 @@ public class InicioSesion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet FiltracionesFarmacia</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet FiltracionesFarmacia at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,43 +74,19 @@ public class InicioSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("pass");
-        ControladorEmpleados co = new ControladorEmpleados();
-        if (co.verificarUserName(userName)) {
-            Usuario usuario = co.obtenerUsuario(userName, password);
-            HttpSession nuevoSession = request.getSession(true);
-            nuevoSession.setAttribute("Usuario", usuario);
+        if ("Filtrar".equals(request.getParameter("FiltrarMedicina"))) {
+            String nombre = request.getParameter("nombreMed");
+            ControladorReportes co = new ControladorReportes();
 
-            if (usuario != null) {
-                request.setAttribute("Usuario", usuario);
+            request.setAttribute("MedicamentosAMostrar", co.obtenerMedicamentos(nombre));
 
-                switch (usuario.getArea().getCodigo()) {
-                    case Area.CONDIGO_CONTRATADOR:
-                        getServletContext().getRequestDispatcher("/Contratador/Home.jsp").forward(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Farmacia/HomeFarmacia.jsp");
+            dispatcher.forward(request, response);
+        }
+        if ("Resetear".equals(request.getParameter("ResetearMedicina"))) {
 
-                        break;
-                    case Area.CONDIGO_FARMACEUTICO:
-                        getServletContext().getRequestDispatcher("/Farmacia/HomeFarmacia.jsp").forward(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Farmacia/HomeFarmacia.jsp");
 
-                        break;
-                    case Area.CONDIGO_CONSULTOR:
-                        getServletContext().getRequestDispatcher("/Recepcion/HomeRecepcion.jsp").forward(request, response);
-
-                        break;    
-                        
-                    default:
-                        throw new AssertionError();
-                }
-
-            } else {
-                request.setAttribute("errorPassword", userName);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/Inicio/Login.jsp");
-                dispatcher.forward(request, response);
-            }
-        } else {
-            request.setAttribute("errorUserName", userName);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/Inicio/Login.jsp");
             dispatcher.forward(request, response);
         }
     }

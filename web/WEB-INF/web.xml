@@ -16,6 +16,34 @@
         <servlet-name>Despedir</servlet-name>
         <servlet-class>Servlet.Despedir</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FiltracionEmpleados</servlet-name>
+        <servlet-class>Servlet.FiltracionEmpleados</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ComprarMedicina</servlet-name>
+        <servlet-class>Servlet.ComprarMedicina</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarMedicamento</servlet-name>
+        <servlet-class>Servlet.RegistrarMedicamento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FiltracionesFarmacia</servlet-name>
+        <servlet-class>Servlet.FiltracionesFarmacia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Reportes</servlet-name>
+        <servlet-class>Servlet.Reportes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarAListaVentas</servlet-name>
+        <servlet-class>Servlet.AgregarAListaVentas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarVenta</servlet-name>
+        <servlet-class>Servlet.RegistrarVenta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>iniciarSesion</servlet-name>
         <url-pattern>/InicioSesion</url-pattern>
@@ -31,6 +59,34 @@
     <servlet-mapping>
         <servlet-name>Despedir</servlet-name>
         <url-pattern>/Despedir</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FiltracionEmpleados</servlet-name>
+        <url-pattern>/FiltracionEmpleados</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComprarMedicina</servlet-name>
+        <url-pattern>/ComprarMedicina</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarMedicamento</servlet-name>
+        <url-pattern>/RegistrarMedicamento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FiltracionesFarmacia</servlet-name>
+        <url-pattern>/FiltracionesFarmacia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Reportes</servlet-name>
+        <url-pattern>/Reportes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarAListaVentas</servlet-name>
+        <url-pattern>/AgregarAListaVentas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarVenta</servlet-name>
+        <url-pattern>/RegistrarVenta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,7 +6,9 @@
 package DB;
 
 import Empleados.Area;
+import Empleados.Areas.Consultor;
 import Empleados.Areas.Contratador;
+import Empleados.Areas.Farmaceutico;
 import Empleados.Empleado;
 import Empleados.PeriodoLaboral;
 import Empleados.Salario;
@@ -36,11 +38,13 @@ public class ControladorEmpleados extends Coneccion {
     private final static String ST_UPDATE_IGSS_2 = "=? WHERE Cui = ?";
 private final static String ST_BORRAR_USUARIO = "DELETE FROM Usuario WHERE Cui = ?";
     private final static String ST_OBTENER_CUI_EMPLEADOS = "SELECT Cui FROM Empleado";
+    private final static String ST_OBTENER_CUI_EMPLEADOS_POR_AREA = "SELECT Cui FROM Empleado WHERE CodigoArea=?";
     private final static String ST_OBTENER_AREA = "SELECT * FROM Area WHERE Codigo = ?";
     private final static String ST_OBTENER_AREA_POR_NOMBRE = "SELECT Codigo FROM Area WHERE Nombre=?";
     private final static String ST_OBTENER_CODIGOS_AREAS = "SELECT Codigo FROM Area";
     private final static String ST_OBTENER_CODIGOS_PERIODOS = "SELECT Codigo FROM PeriodoLaboral";
-    private final static String ST_OBTENER_PERIODO_LABORAL = "SELECT * FROM PeriodoLaboral WHERE Cui = ? ORDER BY Fecha DESC;";
+    private final static String ST_OBTENER_PERIODO_LABORAL = "SELECT * FROM PeriodoLaboral WHERE Cui = ? ORDER BY Fecha DESC";
+    private final static String ST_OBTENER_SALARIOS = "SELECT * FROM Sueldo WHERE Cui = ? ORDER BY Fecha DESC";
 
     public boolean verificarUserName(String userName) {
         PreparedStatement declaracionPreparada = null;
@@ -77,6 +81,12 @@ private final static String ST_BORRAR_USUARIO = "DELETE FROM Usuario WHERE Cui =
                     case Area.CONDIGO_CONTRATADOR:
                         return new Contratador(empl.getNombre(), empl.getCui(),
                                 empl.getArea(), empl.isIgss(), empl.isIrtra(), empl.getPeriodos(), userName, password);
+                    case Area.CONDIGO_FARMACEUTICO:
+                        return new Farmaceutico(empl.getNombre(), empl.getCui(),
+                                empl.getArea(), empl.isIgss(), empl.isIrtra(), empl.getPeriodos(), userName, password);
+                    case Area.CONDIGO_CONSULTOR:
+                        return new Consultor(empl.getNombre(), empl.getCui(),
+                                empl.getArea(), empl.isIgss(), empl.isIrtra(), empl.getPeriodos(), userName, password);    
                     default:
                         throw new AssertionError();
                 }
@@ -100,6 +110,7 @@ private final static String ST_BORRAR_USUARIO = "DELETE FROM Usuario WHERE Cui =
             if (resultado2.absolute(1)) {
                 empleado = new Empleado(resultado2.getString("Nombre"), cui, obtenerArea(resultado2.getString("CodigoArea")), obtenerPeriodos(cui),
                         Boolean.valueOf(resultado2.getString("Igss")), Boolean.valueOf(resultado2.getString("Irtra")));
+                empleado.setSalario(obtenerSalarios(cui));
                 return empleado;
 
             }
@@ -117,6 +128,26 @@ private final static String ST_BORRAR_USUARIO = "DELETE FROM Usuario WHERE Cui =
 
             }
             PreparedStatement declaracionPreparada = getConeccion().prepareStatement(ST_OBTENER_CUI_EMPLEADOS);
+            ResultSet resultado2 = declaracionPreparada.executeQuery();
+            while (resultado2.next()) {
+                empleados.add(obtenerEmpleado(resultado2.getInt("Cui")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return empleados;
+    }
+    
+    
+        public ArrayList<Empleado> obtenerEmpleadosPorArea(String codigoArea) {
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        try {
+            if (getConeccion() == null) {
+                setConeccion();
+
+            }
+            PreparedStatement declaracionPreparada = getConeccion().prepareStatement(ST_OBTENER_CUI_EMPLEADOS_POR_AREA);
+            declaracionPreparada.setString(1, codigoArea);
             ResultSet resultado2 = declaracionPreparada.executeQuery();
             while (resultado2.next()) {
                 empleados.add(obtenerEmpleado(resultado2.getInt("Cui")));
@@ -196,6 +227,25 @@ private final static String ST_BORRAR_USUARIO = "DELETE FROM Usuario WHERE Cui =
         return periodoLaborals;
     }
 
+        public ArrayList<Salario> obtenerSalarios(int cui) {
+        ArrayList<Salario> salarios = new ArrayList<>();
+        try {
+            if (getConeccion() == null) {
+                setConeccion();
+
+            }
+            PreparedStatement declaracionPreparada = getConeccion().prepareStatement(ST_OBTENER_SALARIOS);
+            declaracionPreparada.setString(1, String.valueOf(cui));
+            ResultSet resultado2 = declaracionPreparada.executeQuery();
+            while (resultado2.next()) {
+                salarios.add(new Salario(resultado2.getInt("Monto"), resultado2.getObject("Fecha", LocalDate.class)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return salarios;
+    }
+    
     public ArrayList<Area> obtenerAreas() {
         ArrayList<Area> areas = new ArrayList<>();
         try {

@@ -3,29 +3,57 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Componentes/cabeceraUsuario.jsp</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Componentes/CabeceraInicio.html</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/css/bootstrap.css</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/GeneradorDeCodigos.java</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Areas/Contratador.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/js/manejadorCheckbox.js</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Farmacia/HomeFarmacia.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Farmacia/Reportes/Ganancias.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/FiltracionEmpleados.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Salario.java</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Contrataciones.jsp</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/Coneccion.java</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Home.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/ComprarMedicina.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Farmacia/Venta.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Medicamento/AComprar.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/PeriodoLaboral.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/ProcesoContratacion.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/Reportes.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/css/bootstrap.css</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/js/confirmarPass.js</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Farmacia/Reportes/Medicamentos.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Medicamento/Tipo.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/RegistrarMedicamento.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Reportes/Retirados.jsp</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/css/bootstrap.min.css</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/ControladorEmpleados.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/LogOut.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/Despedir.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/ControlJasper/ReporteEmpleados.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Area.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Usuario.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DummiesReportes/ContratadosDTO.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Componentes/CabeceraInicio.html</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Farmacia/Reportes/Ventas.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Medicamento/Medicina.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Home.jsp</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/InicioSesion.java</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/META-INF/context.xml</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Empleado.java</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/LogOut.java</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/PeriodosLaborales.jsp</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/js/ProcesoNuevo.js</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Inicio/Login.jsp</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Reportes/MenuReportes.jsp</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/PeriodoLaboral.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Medicamento/Compra.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/Reportes/Contratados.jsp</file>
             <file>file:/home/sergio/IPC2Proyectos/Hospital/web/WEB-INF/web.xml</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Area.java</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Usuario.java</file>
-            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/ProcesoContratacion.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/ControladorReportes.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Areas/Farmaceutico.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/ControladorFarmacia.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Componentes/cabeceraUsuario.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/DB/GeneradorDeCodigos.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Empleados/Areas/Contratador.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Farmacia/Compra.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/FiltracionesFarmacia.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Contratador/PeriodosLaborales.jsp</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/js/ProcesoNuevo.js</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/src/java/Servlet/Contratar.java</file>
+            <file>file:/home/sergio/IPC2Proyectos/Hospital/web/Farmacia/Reportes/MenuReportes.jsp</file>
         </group>
     </open-files>
 </project-private>

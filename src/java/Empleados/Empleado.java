@@ -1,5 +1,6 @@
 package Empleados;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /*
@@ -18,6 +19,7 @@ public class Empleado {
     private int cui;
     private Area area;
     private ArrayList<PeriodoLaboral> periodos;
+    private ArrayList<Salario> salario;
     private boolean igss;
     private boolean irtra;
 
@@ -53,8 +55,24 @@ public class Empleado {
     public boolean isIrtra() {
         return irtra;
     }
+
+    public ArrayList<Salario> getSalario() {
+        return salario;
+    }
     
-    
+    public LocalDate obtenerFechaContratado(){
+        for (int i = 0; i < periodos.size(); i++) {
+            if (periodos.get(i).getNombre().equals(PeriodoLaboral.ID_CONTRATADO)) {
+                return periodos.get(i).getFecha();
+            }
+            
+        }
+        return null;
+    }
+
+    public void setSalario(ArrayList<Salario> salario) {
+        this.salario = salario;
+    }
      
     
 }
