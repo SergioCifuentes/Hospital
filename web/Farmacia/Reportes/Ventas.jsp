@@ -1,3 +1,5 @@
+<%@page import="DummiesReportes.VentasDTO"%>
+<%@page import="DummiesReportes.MedicamentosDTO"%>
 <%@page import="DB.ControladorReportes"%>
 <%@page import="Medicamento.Tipo"%>
 <%@page import="java.util.ArrayList"%>
@@ -13,50 +15,58 @@
 </div>
 
 
-<%    ArrayList<String[]> medic;
-    if (request.getAttribute("MedicamentosAMostrar") != null) {
-        medic = (ArrayList) request.getAttribute("MedicamentosAMostrar");
+<%    ArrayList<VentasDTO> medic;
+    if (request.getAttribute("VentasAMostrar") != null) {
+        medic = (ArrayList) request.getAttribute("VentasAMostrar");
     } else {
         ControladorReportes com = new ControladorReportes();
-        medic = com.obtenerMedicamentos(null);
+        medic = com.obtenerVentas(null, null, null);
     }
 %>
 
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Codigo</th>
+            <th scope="col">Cui</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Existentes</th>
-            <th scope="col">Cantidad Minima</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Costo</th>
+            <th scope="col">Ventas</th>
 
         </tr>
     </thead>
     <tbody>
         <%for (int idx = 0; idx < medic.size(); idx++) {%>
-        <tr <% if (Integer.parseInt(medic.get(idx)[3])<=Integer.parseInt(medi.get(idx)[4])) {%>
-            style="background-color: red"<%}%>>
+        <tr>
 
-            <td><%=medic.get(idx)[0]%></td>
-            <td><%=medic.get(idx)[1]%></td>
-            <td><%=medic.get(idx)[2]%></td>
-            <td><%=medic.get(idx)[3]%></td>
-            <td><%=medic.get(idx)[4]%></td>
-            <td><%=medic.get(idx)[5]%></td>
-            <td><%=medic.get(idx)[6]%></td>
+            <td><%=medic.get(idx).getCui()%></td>
+            <td><%=medic.get(idx).getNombre()%></td>
+            <td> <a class="btn btn-secondary" data-toggle="collapse" href="#collapseComentarios<%=idx%>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Ventas
+                </a>
+                <div class="collapse" id="collapseComentarios<%=idx%>">
+                    <div class="card card-body">
+                        
+                        <br>
+                    </div>
+                </div>
+            </td>
+
+
         </tr>
+
         <%
-            }%>
+        }%>
 
 
     </tbody>
+
 </table>
 
 <form action="/Hospital/Reportes" method="post">
-    <%session.setAttribute("Array", medi);%>
-    
+    <%session.setAttribute("Array", medic);%>
+
     <input type="submit" class="btn btn-danger" name="Medicamentos"value="ImportarPDF">
 </form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 

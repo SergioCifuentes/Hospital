@@ -15,6 +15,7 @@ public class Area {
     private boolean usuario;
 
     public  static final String CONDIGO_CONTRATADOR="A0001"; 
+    public  static final String CONDIGO_MEDICO="A0002"; 
     public  static final String CONDIGO_FARMACEUTICO="A0003";
     public  static final String CONDIGO_CONSULTOR="A0004";
     

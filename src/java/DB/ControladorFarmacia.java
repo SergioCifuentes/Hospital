@@ -250,7 +250,7 @@ public class ControladorFarmacia extends Coneccion {
         return venta;
     }
     
-    
+
 
     public Medicina obtenerMedicina(String codigo) {
         Medicina medicinas = null;

@@ -6,7 +6,9 @@
 package DB;
 
 import DummiesReportes.MedicamentosDTO;
+import DummiesReportes.VentasDTO;
 import Empleados.Area;
+import Empleados.Areas.Farmaceutico;
 import Empleados.Empleado;
 import Medicamento.Medicina;
 import Medicamento.Tipo;
@@ -16,6 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,6 +31,7 @@ public class ControladorReportes extends Coneccion {
     private final static String ST_VENTA = " SELECT *  From Venta";
     private final static String ST_WHERE = " WHERE ";
     private final static String ST_CONTRAT = " Nombre = 'Contratado'";
+    private final static String ST_VENDEDOR = " CuiVendedor = ? ";
     private final static String ST_RETIRADOS = " Nombre = 'Despedido' OR Nombre = 'Renuncio'";
     private final static String ST_FECHA_INICIO = " Fecha> ? ";
     private final static String ST_AND = " AND ";
@@ -182,12 +187,12 @@ public class ControladorReportes extends Coneccion {
                         s[4] = String.valueOf(tipos.get(i).getCantidadMinima());
                         s[5] = String.valueOf(tipos.get(i).getPrecio());
                         if (me.isEmpty()) {
-                             s[6] = String.valueOf(1);
-                        }else{
-                             s[6] = String.valueOf(me.get(0).getCompra().getCosto());
+                            s[6] = String.valueOf(1);
+                        } else {
+                            s[6] = String.valueOf(me.get(0).getCompra().getCosto());
                         }
                         contratados.add(s);
-                       
+
                     }
                 } else {
                     s[0] = String.valueOf(tipos.get(i).getCodigo());
@@ -197,81 +202,83 @@ public class ControladorReportes extends Coneccion {
                     s[4] = String.valueOf(tipos.get(i).getCantidadMinima());
                     s[5] = String.valueOf(tipos.get(i).getPrecio());
                     if (me.isEmpty()) {
-                             s[6] = String.valueOf(1);
-                        }else{
-                             s[6] = String.valueOf(me.get(0).getCompra().getCosto());
-                        }
+                        s[6] = String.valueOf(1);
+                    } else {
+                        s[6] = String.valueOf(me.get(0).getCompra().getCosto());
+                    }
                     contratados.add(s);
                 }
-                
 
             }
-           
+
         } catch (NumberFormatException e) {
         }
         return contratados;
     }
-    
-    
-     public ArrayList<MedicamentosDTO> obtenerVentas(LocalDate inicio,LocalDate fin ,String txt) {
-        ArrayList<MedicamentosDTO> ventas = new ArrayList<>();
-        
-        ControladorEmpleados controladorEmpleados=new ControladorEmpleados();
-        ArrayList<Empleado> farmaceuticos= controladorEmpleados.obtenerEmpleadosPorArea(Area.CONDIGO_FARMACEUTICO);
+
+    public ArrayList<VentasDTO> obtenerVentas(LocalDate inicio, LocalDate fin, String txt) {
+        ArrayList<VentasDTO> ventas = new ArrayList<>();
+
+        ControladorEmpleados controladorEmpleados = new ControladorEmpleados();
+        ArrayList<Empleado> farmaceuticos = controladorEmpleados.obtenerEmpleadosPorArea(Area.CONDIGO_FARMACEUTICO);
         try {
             if (getConeccion() == null) {
                 setConeccion();
             }
-            
+
             for (int i = 0; i < farmaceuticos.size(); i++) {
-                ArrayList<Venta> ventasEmp=new ArrayList<>();
-                
-                
-                
-            }
-            ControladorFarmacia con = new ControladorFarmacia();
-            ArrayList<Tipo> tipos = con.obtenerTipos();
-            for (int i = 0; i < tipos.size(); i++) {
-                ArrayList<Medicina> me = con.obtenerMedicamentosPorTipo(tipos.get(i).getCodigo());
-                String[] s = new String[7];
-                if (txt != null && !"".equals(txt)) {
-                    if (tipos.get(i).getNombre().contains(txt)) {
-                        s[0] = String.valueOf(tipos.get(i).getCodigo());
-                        s[1] = String.valueOf(tipos.get(i).getNombre());
-                        s[2] = String.valueOf(tipos.get(i).getDescripcion());
-                        s[3] = String.valueOf(me.size());
-                        s[4] = String.valueOf(tipos.get(i).getCantidadMinima());
-                        s[5] = String.valueOf(tipos.get(i).getPrecio());
-                        if (me.isEmpty()) {
-                             s[6] = String.valueOf(1);
-                        }else{
-                             s[6] = String.valueOf(me.get(0).getCompra().getCosto());
-                        }
-                        ventas.add(s);
-                       
-                    }
-                } else {
-                    s[0] = String.valueOf(tipos.get(i).getCodigo());
-                    s[1] = String.valueOf(tipos.get(i).getNombre());
-                    s[2] = String.valueOf(tipos.get(i).getDescripcion());
-                    s[3] = String.valueOf(me.size());
-                    s[4] = String.valueOf(tipos.get(i).getCantidadMinima());
-                    s[5] = String.valueOf(tipos.get(i).getPrecio());
-                    if (me.isEmpty()) {
-                             s[6] = String.valueOf(1);
-                        }else{
-                             s[6] = String.valueOf(me.get(0).getCompra().getCosto());
-                        }
-                    ventas.add(s);
-                }
-                
+
+                ArrayList<Venta> ventasEmp = obtenerVentaPorEmpleado(farmaceuticos.get(i).getCui(), inicio, fin);
+                ventas.add(new VentasDTO(String.valueOf(farmaceuticos.get(i).getCui()), farmaceuticos.get(i).getNombre(), ventasEmp));
 
             }
-           
+
         } catch (NumberFormatException e) {
         }
         return ventas;
     }
-    
+
+    public ArrayList<Venta> obtenerVentaPorEmpleado(int cui, LocalDate inicio, LocalDate fin) {
+        ArrayList<Venta> venta = new ArrayList<>();
+        try {
+            if (getConeccion() == null) {
+                setConeccion();
+            }
+            PreparedStatement declaracionPreparada = null;
+            if (inicio == null && fin == null) {
+                declaracionPreparada = getConeccion().prepareStatement(ST_VENTA + ST_WHERE + ST_VENDEDOR);
+                declaracionPreparada.setString(1, String.valueOf(cui));
+            }
+            if (inicio != null && fin != null) {
+                declaracionPreparada = getConeccion().prepareStatement(ST_VENTA + ST_WHERE + ST_VENDEDOR + ST_AND + ST_FECHA_INICIO + ST_AND + ST_FECHA_FINAL);
+                declaracionPreparada.setString(1, String.valueOf(cui));
+                declaracionPreparada.setString(2, String.valueOf(inicio));
+                declaracionPreparada.setString(3, String.valueOf(fin));
+            }
+            if (inicio != null && fin == null) {
+                declaracionPreparada = getConeccion().prepareStatement(ST_VENTA + ST_WHERE + ST_VENDEDOR + ST_AND + ST_FECHA_INICIO);
+                declaracionPreparada.setString(1, String.valueOf(cui));
+                declaracionPreparada.setString(2, String.valueOf(inicio));
+            }
+            if (inicio == null && fin != null) {
+                declaracionPreparada = getConeccion().prepareStatement(ST_VENTA + ST_WHERE + ST_VENDEDOR + ST_AND + ST_FECHA_FINAL);
+                declaracionPreparada.setString(1, String.valueOf(cui));
+                declaracionPreparada.setString(2, String.valueOf(fin));
+            }
+
+            ResultSet resultado2 = declaracionPreparada.executeQuery();
+            ControladorFarmacia con = new ControladorFarmacia();
+            while (resultado2.next()) {
+                System.out.println(resultado2.getString("CodigoMedicamento"));
+                venta.add(con.obtenerVentaDeMedicamento(resultado2.getString("CodigoMedicamento")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return venta;
+    }
+
+  
 
 }

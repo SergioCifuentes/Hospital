@@ -6,7 +6,7 @@
     <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
         <option class="dropdown-item" role="tab" id="contact-tab" data-toggle="tab" aria-controls="Contratados" aria-selected="true" href="#Contratados">Contratados</option>
         <option class="dropdown-item" role="tab" id="contact-tab" data-toggle="tab" aria-controls="Retirados" aria-selected="false" href="#Retirados">Retirados</option>
-        <option class="dropdown-item" href="#">Medicos</option>
+        <option class="dropdown-item" role="tab" id="contact-tab" data-toggle="tab" aria-controls="Medicos" aria-selected="false" href="#Medicos">Medicos</option>
     </div>
 </select>
 
@@ -15,7 +15,7 @@
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="Contratados" role="tabpanel" aria-labelledby="Contratados-tab"><%@include file="Contratados.jsp"%></div>
     <div class="tab-pane fade " id="Retirados" role="tabpanel" aria-labelledby="Retirados-tab"><%@include file="Retirados.jsp"%></div>
-    <div class="tab-pane fade " id="Salarios" role="tabpanel" aria-labelledby="Salarios-tab"></div>
+    <div class="tab-pane fade " id="Medicos" role="tabpanel" aria-labelledby="Medicos-tab"><%@include file="Medicos.jsp"%></div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

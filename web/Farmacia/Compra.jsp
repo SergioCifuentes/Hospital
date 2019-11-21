@@ -20,8 +20,8 @@
     <body>
         <br>
         Agregar Tipo De Medicamento: 
-        <input type="button" data-toggle="modal" data-target="#NuevoTipoModal" value="+" class="btn btn-primary">
-        <div class="modal fade" id="NuevoTipoModal" tabindex="-1" role="dialog" aria-labelledby="NuevoTipoLabel" aria-hidden="true">
+        <input type="button" data-toggle="modal" data-target="#NuevoTipoModalC" value="+" class="btn btn-primary">
+        <div class="modal fade" id="NuevoTipoModalC" tabindex="-1" role="dialog" aria-labelledby="NuevoTipoCLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -81,9 +81,9 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Medicamento</th>
-                    <th scope="col">Cantidad</th>
+                    <th scope="col">Descripcion</th>
                     <th scope="col">Precio A Vender c/u</th>
-                    <th scope="col">Total</th>
+                    <th scope="col">Comprar</th>
                     <th scope="col"></th>
 
                 </tr>
